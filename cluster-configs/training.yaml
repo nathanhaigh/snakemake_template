@@ -1,0 +1,3 @@
+__default__ :
+        account       : training
+        partition     : compute
