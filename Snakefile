@@ -1,7 +1,7 @@
 rule hello_world:
 	output:
-		"Hello/World.txt",
+		"{cheer}/{world}.txt",
 	shell:
 		"""
-		echo "Hello, World!" > {output}
+		echo "{wildcards.cheer}, {wildcards.world}!" > {output}
 		"""
