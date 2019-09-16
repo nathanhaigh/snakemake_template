@@ -64,10 +64,3 @@ for SAMPLE in ${SAMPLES[@]}; do
   | samtools view -b \
   > mapped/${SAMPLE}.bam
 done
-
-# Aggregate FastQC results from raw reads
-#####
-mkdir -p reports
-multiqc --force \
-  --filename reports/raw_reads_multiqc.html \
-  raw_reads/*_R?_fastqc.zip
