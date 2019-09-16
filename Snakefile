@@ -54,7 +54,7 @@ rule bwa_index:
 		  {input}
 		"""
 
-rule fastqc_single_input:
+rule fastqc:
 	input:
 		"raw_reads/{prefix}.fastq.gz",
 	output:
