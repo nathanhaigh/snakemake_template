@@ -28,7 +28,6 @@ rule bwa_index:
 	shell:
 		"""
 		bwa index \
-		  -p {input} \
 		  -a bwtsw \
 		  {input}
 		"""
