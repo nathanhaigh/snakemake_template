@@ -11,7 +11,9 @@ singularity:
 # the list of ALL the files you want the workflow to create. e.g.:
 rule all:
 	input:
-		expand("references/reference.fasta.gz.{ext}", ext=['amb', 'ann', 'bwt', 'pac', 'sa']),
+                expand("references/reference.fasta.gz.{ext}",
+                        ext=['amb', 'ann', 'bwt', 'pac', 'sa']
+                ),
 
 ################
 # Rules Proper #
