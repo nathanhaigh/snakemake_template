@@ -34,7 +34,7 @@ curl "raw.githubusercontent.com/timflutre/trimmomatic/master/adapters/TruSeq3-PE
 
 # Index reference genome file
 #####
-bwa index -p references/reference.fasta.gz -a bwtsw references/reference.fasta.gz
+bwa index -a bwtsw references/reference.fasta.gz
 
 for SAMPLE in ${SAMPLES[@]}; do
   # FastQC the raw reads
