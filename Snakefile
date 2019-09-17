@@ -21,7 +21,7 @@ SAMPLES = [
 #   This image already contains the bioinformatic tools we will be using
 singularity:
 	"file:///shared/.singularity/nextflow-embl-abr-webinar.simg"
-#	"docker://rsuchecki/nextflow-embl-abr-webinar"
+	#"docker://rsuchecki/nextflow-embl-abr-webinar"
 
 ################
 # Pseudo-rules #
