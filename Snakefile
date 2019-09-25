@@ -1,3 +1,22 @@
+SAMPLES = [
+"ACBarrie",
+"Alsen",
+# "Baxter",
+# "Chara",
+# "Drysdale",
+# "Excalibur",
+# "Gladius",
+# "H45",
+# "Kukri",
+# "Pastor",
+# "RAC875",
+# "Volcanii",
+# "Westonia",
+# "Wyalkatchem",
+# "Xiaoyan",
+# "Yitpi",
+]
+
 # A global singularity image to be used for all jobs - need to specify --use-singularity and have singularity available on the command line
 #   This image already contains the bioinformatic tools we will be using
 singularity:
@@ -14,6 +33,10 @@ rule all:
                 expand("references/reference.fasta.gz.{ext}",
                         ext=['amb', 'ann', 'bwt', 'pac', 'sa']
                 ),
+		expand("raw_reads/{SAMPLE}_{read}_fastqc.html",
+			SAMPLE=SAMPLES,
+			read=['R1', 'R2']
+		),
 
 ################
 # Rules Proper #
@@ -31,5 +54,18 @@ rule bwa_index:
 		"""
 		bwa index \
 		  -a bwtsw \
+		  {input}
+		"""
+
+rule fastqc:
+	input:
+		 "raw_reads/{prefix}.fastq.gz",
+	output:
+		zip = "raw_reads/{prefix}_fastqc.zip",
+		html = "raw_reads/{prefix}_fastqc.html",
+	shell:
+		"""
+		fastqc \
+		  --threads 1 \
 		  {input}
 		"""
