@@ -20,8 +20,8 @@ SAMPLES = [
 # A global singularity image to be used for all jobs - need to specify --use-singularity and have singularity available on the command line
 #   This image already contains the bioinformatic tools we will be using
 singularity:
-	"file:///shared/.singularity/nextflow-embl-abr-webinar.simg"
-	#"docker://rsuchecki/nextflow-embl-abr-webinar"
+	"file:///shared/.singularity/workflows-training.simg"
+	#"docker://continuumio/miniconda3:4.5.12"
 
 ################
 # Pseudo-rules #
