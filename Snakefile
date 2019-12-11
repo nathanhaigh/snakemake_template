@@ -38,9 +38,7 @@ rule fastqc_raw:
 		MAX_THREADS
 	benchmark:
 		repeat("benchmarks/fastqc_raw/{prefix}.txt", N_BENCHMARKS),
-	wrapper:
-		"0.31.1/bio/fastqc"
-#	shell:
-#		"""
-#		fastqc --threads {threads} {input}
-#		"""
+	shell:
+		"""
+		fastqc --threads {threads} {input}
+		"""
