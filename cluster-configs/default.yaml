@@ -5,6 +5,7 @@ __default__ :
         cpus-per-task : 1
         mem           : "200M"
         time          : "00-00:05:00"
+        gres          : null
         account       : "my_account"
         partition     : "my_partition"
 

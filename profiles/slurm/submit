@@ -15,13 +15,19 @@ DEP_STRING=""
 # We'll just process those sbatch arguments which need some pre-processing
 # everything else will get sent straight to sbatch
 #>&2 echo "*${0}*"
-while getopts ":d:o:e:m:" opt; do
+while getopts ":d:o:e:m:g:" opt; do
     case "${opt}" in
     d)
         DEPS=${OPTARG}
         ;;
     m)
         SBATCH_ARGS+=" --mem ${OPTARG}"
+        ;;
+    g)
+	# Parse `-g` as being for sbatch's `--gres`
+        if [ "${OPTARG}" != "None" ]; then
+          SBATCH_ARGS+=" --gres ${OPTARG}"
+        fi
         ;;
     o|e)
         FILE=${OPTARG}
