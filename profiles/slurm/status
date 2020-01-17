@@ -17,7 +17,13 @@ case "${STATE}" in
 		echo failed
 		exit 0
 		;;
+	"" )
+		# Slurm knows nothing about the provided Job_ID
+		echo failed
+		exit 0
+		;;
 	* )
+		# Assume anything else returned by Slurm is indicative of the job still running
 		echo running
 		exit 0
 		;;
