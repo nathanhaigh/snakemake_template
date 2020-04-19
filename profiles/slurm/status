@@ -30,7 +30,7 @@ function retry {
 }
 
 set -o pipefail
-STATE=$(retry sacct --format state --parsable2 --jobs "${JOB_ID}" --noheader | fgrep -v -e '.batch')
+STATE=$(retry sacct --format state --parsable2 --jobs "${JOB_ID}" --noheader | fgrep -v -e '.batch' || squeue --format "%T" --jobs 19 --noheader)
 
 case "${STATE}" in
 	*RUNNING*|*PENDING*|*SUSPENDED*|*COMPLETING*|*CONFIGURING* )
