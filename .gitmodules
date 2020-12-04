@@ -1,0 +1,3 @@
+[submodule "profiles"]
+	path = profiles
+	url = https://github.com/sagc-bioinformatics/snakemake_profiles
