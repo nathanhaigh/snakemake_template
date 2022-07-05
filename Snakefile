@@ -1,20 +1,6 @@
 SAMPLES = [
-  "ACBarrie",
-  "Alsen",
-#  "Baxter",
-#  "Chara",
-#  "Drysdale",
-#  "Excalibur",
-#  "Gladius",
-#  "H45",
-#  "Kukri",
-#  "Pastor",
-#  "RAC875",
-#  "Volcanii",
-#  "Westonia",
-#  "Wyalkatchem",
-#  "Xiaoyan",
-#  "Yitpi",
+  "Lancer",
+#  "Mace",
 ]
 
 # A global singularity image to be used for all jobs - need to specify --use-singularity and have singularity available on the command line
@@ -47,6 +33,8 @@ rule bwa_index:
 		"{ref}.bwt",
 		"{ref}.pac",
 		"{ref}.sa",
+	conda:
+		"envs/default.yaml",
 	shell:
 		"""
 		bwa index \
@@ -60,6 +48,8 @@ rule fastqc:
 	output:
 		zip  = "raw_reads/{prefix}_fastqc.zip",
 		html = "raw_reads/{prefix}_fastqc.html",
+	conda:
+		"envs/default.yaml",
 	shell:
 		"""
 		fastqc --threads 1 {input}
@@ -75,6 +65,8 @@ rule trimmomatic:
 		r2          = "qc_reads/{SAMPLE}_R2.fastq.gz",
 		r1_unpaired = "qc_reads/{SAMPLE}_R1.unpaired.fastq.gz",
 		r2_unpaired = "qc_reads/{SAMPLE}_R2.unpaired.fastq.gz",
+	conda:
+		"envs/default.yaml",
 	shell:
 		"""
 		trimmomatic PE \
@@ -99,6 +91,8 @@ rule bwa_mem:
 	params:
 		#prefix = "references/reference.fasta.gz",
 		prefix = lambda wildcards, input: input["index"][0][:-4],
+	conda:
+		"envs/default.yaml",
 	shell:
 		"""
 		bwa mem -t 1 \
