@@ -59,7 +59,7 @@ rule trimmomatic:
 	input:
 		r1          = "raw_reads/{SAMPLE}_R1.fastq.gz",
 		r2          = "raw_reads/{SAMPLE}_R2.fastq.gz",
-		adapters    = "misc/trimmomatic_adapters/TruSeq3-PE.fa"
+		adapters    = "misc/TruSeq3-PE.fa"
 	output:
 		r1          = "qc_reads/{SAMPLE}_R1.fastq.gz",
 		r2          = "qc_reads/{SAMPLE}_R2.fastq.gz",
